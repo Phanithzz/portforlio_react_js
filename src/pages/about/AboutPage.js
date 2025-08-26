@@ -1,8 +1,15 @@
 import React from 'react'
+import SectionPaper from '../../components/SectionPaper'
 
 const AboutPage = () => {
   return (
-    <div>AboutPage</div>
+    <SectionPaper
+    id="about"
+    isHomePage={false}
+    content="Biography"
+    link='link'
+    />
+
   )
 }
 

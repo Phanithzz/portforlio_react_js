@@ -6,20 +6,37 @@ $color-accent: #d3a583;
 $color-black: #000;
 $color-white: #fff;
 $font-family-base: 'Roboto', sans-serif;
-
+@keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .main {
+    animation: slideInLeft 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  
+  }
+  
 .main{
     background-color: $color-white;
-    color: $color-primary;
+    color: $color-black;
     // font-family: $font-family-base;
 }
 
 .btn_group button{
     border-radius: 0.5rem;
     padding: 0.5rem;
+    
 }
 
 .btn_group button a{
     text-decoration: none;
+    color: $color-black;
 }
 
 .btn_group button:hover{

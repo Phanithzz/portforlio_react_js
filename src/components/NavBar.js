@@ -1,34 +1,49 @@
-import React from 'react'
 import './styles/NavBarStyle.scss';
-import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import { Button } from '@mui/material';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import { Button, AppBar, Toolbar, Typography, Box } from '@mui/material';
 
-export const NavBar = (props) => {
-
-    const {borderRadius} = props;
+export const NavBar = ({ borderRadius, darkMode, onToggleDarkMode }) => {
+  const navItems = [
+    { label: 'Home', href: '#home' },
+    { label: 'About', href: '#about' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Contact', href: '#contact' }
+  ];
 
   return (
-    <div 
-    style={{ borderRadius : borderRadius ? borderRadius : '1rem'}}
-    className='position-sticky top-0  d-flex flex-row justify-content-between align-items-center flex-grow-1 p-3 main'>
-        <h4 className='col-lg-5'>
-            Portfolio 2025
-        </h4>
-        <div className='col-lg-7 d-flex flex-row justify-content-evenly btn_group'>
-            <Button>
-                <a href='#about'>About</a>
+    <AppBar 
+      position="sticky" 
+      sx={{ 
+        borderRadius: borderRadius || '1rem',
+        backgroundColor: 'background.paper'
+      }}
+    >
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <Typography variant="h5" component="h1">
+          Portfolio 2025
+        </Typography>
+        
+        <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+          {navItems.map((item) => (
+            <Button 
+              key={item.label}
+              component="a" 
+              href={item.href}
+              sx={{ color: 'text.primary' }}
+            >
+              {item.label}
             </Button>
-            <Button>
-                <a href='#project'>Projects</a>
-            </Button>
-            <Button>
-                <a href='#contact'>Contact</a>
-            </Button>
-            <Button>
-                <DarkModeIcon  />
-            </Button>
-        </div>
-    </div>
-  )
-}
+          ))}
+          
+          <Button 
+            onClick={onToggleDarkMode}
+            aria-label="Toggle dark mode"
+          >
+            {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
+          </Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
+  );
+};
