@@ -32,7 +32,7 @@ const OverviewPage = (props) => {
         content="Passionate full-stack developer, skilled in building robust backend systems and engaging frontend experiences."
         width='100%'
         link='Hire me'
-        goTo='hire-me-form'
+        goTo='#contact'
         />
         <Fragment >
           <LogoHolder width="2rem" height="2rem" />

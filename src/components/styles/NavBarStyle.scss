@@ -17,10 +17,10 @@ $font-family-base: 'Roboto', sans-serif;
     }
   }
   
-  .main {
-    animation: slideInLeft 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-  
-  }
+.main {
+  animation: slideInLeft 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+
+}
   
 .main{
     background-color: $color-white;

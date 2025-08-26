@@ -1,5 +1,5 @@
 .App {
-  padding: 3rem;
+  padding: 2rem;
   background: linear-gradient(
     120deg,
     #000000 0%,   
@@ -12,7 +12,28 @@
   background-size: 200% 200%;
   animation: gradientIntro 1s ease-out forwards;
 }
+.simplebar-wrapper,
+.simplebar-content {
+  margin: 0;
+  padding: 0;
+}
+.appear-down {
+  animation: slideDown 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 
+}
+.appear-up {
+  animation: slideUp 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+
+}
+
+html {
+  scroll-padding-top: 70px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+/* Key frames section */
 @keyframes gradientIntro {
   from {
     background-position: 100% 0%;
@@ -21,13 +42,6 @@
     background-position: 0% 0%;
   }
 }
-
-
-
-#about, #experience, #home {
-  scroll-margin-top: 70px; /* match NavBar height */
-}
-
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -51,13 +65,5 @@
   }
 }
 
-.appear-down {
-  animation: slideDown 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-
-}
-.appear-up {
-  animation: slideUp 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-
-}
 
 

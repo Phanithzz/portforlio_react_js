@@ -11,6 +11,34 @@ export const NavBar = ({ borderRadius, darkMode, onToggleDarkMode }) => {
     { label: 'Contact', href: '#contact' }
   ];
 
+  const handleNavClick = (href, e) => {
+    e.preventDefault();
+    const targetId = href.substring(1); // Remove the '#'
+    const element = document.getElementById(targetId);
+    
+    if (element) {
+      const navbarHeight = 70; // Adjust this to match your AppBar height
+      const elementPosition = element.offsetTop;
+      
+      // Find the scrollable container (your SimpleBar/div container)
+      const scrollContainer = element.closest('[style*="overflow"]') || 
+                            element.closest('.simplebar-content-wrapper') ||
+                            window;
+      
+      if (scrollContainer === window) {
+        window.scrollTo({
+          top: elementPosition - navbarHeight,
+          behavior: 'smooth'
+        });
+      } else {
+        scrollContainer.scrollTo({
+          top: elementPosition - navbarHeight,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
   return (
     <AppBar 
       position="sticky" 
@@ -18,6 +46,7 @@ export const NavBar = ({ borderRadius, darkMode, onToggleDarkMode }) => {
         borderRadius: borderRadius || '1rem',
         backgroundColor: 'background.paper'
       }}
+      className='main'
     >
       <Toolbar sx={{ justifyContent: 'space-between' }}>
         <Typography variant="h5" component="h1">
@@ -30,6 +59,7 @@ export const NavBar = ({ borderRadius, darkMode, onToggleDarkMode }) => {
               key={item.label}
               component="a" 
               href={item.href}
+              onClick={(e) => handleNavClick(item.href, e)}
               sx={{ color: 'text.primary' }}
             >
               {item.label}
