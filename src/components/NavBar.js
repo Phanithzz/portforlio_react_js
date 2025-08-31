@@ -2,8 +2,13 @@ import './styles/NavBarStyle.scss';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { Button, AppBar, Toolbar, Typography, Box } from '@mui/material';
+import { useContext } from 'react';
+import { ThemeContext } from '../contexts/ThemeContext';
+import { handleNavClick } from '../utils/NavigateUtil';
 
-export const NavBar = ({ borderRadius, darkMode, onToggleDarkMode }) => {
+export const NavBar = ({ borderRadius }) => {
+  const {isDark, setIsDark} = useContext(ThemeContext);
+
   const navItems = [
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
@@ -11,40 +16,13 @@ export const NavBar = ({ borderRadius, darkMode, onToggleDarkMode }) => {
     { label: 'Contact', href: '#contact' }
   ];
 
-  const handleNavClick = (href, e) => {
-    e.preventDefault();
-    const targetId = href.substring(1); // Remove the '#'
-    const element = document.getElementById(targetId);
-    
-    if (element) {
-      const navbarHeight = 70; // Adjust this to match your AppBar height
-      const elementPosition = element.offsetTop;
-      
-      // Find the scrollable container (your SimpleBar/div container)
-      const scrollContainer = element.closest('[style*="overflow"]') || 
-                            element.closest('.simplebar-content-wrapper') ||
-                            window;
-      
-      if (scrollContainer === window) {
-        window.scrollTo({
-          top: elementPosition - navbarHeight,
-          behavior: 'smooth'
-        });
-      } else {
-        scrollContainer.scrollTo({
-          top: elementPosition - navbarHeight,
-          behavior: 'smooth'
-        });
-      }
-    }
-  };
-
   return (
     <AppBar 
       position="sticky" 
       sx={{ 
+        backgroundColor: isDark ? '#191919' : 'white',
+        color: isDark ? 'white' : '#191919',
         borderRadius: borderRadius || '1rem',
-        backgroundColor: 'background.paper'
       }}
       className='main'
     >
@@ -60,17 +38,18 @@ export const NavBar = ({ borderRadius, darkMode, onToggleDarkMode }) => {
               component="a" 
               href={item.href}
               onClick={(e) => handleNavClick(item.href, e)}
-              sx={{ color: 'text.primary' }}
+              sx={{ color: isDark ? '#eeeeee' : '#191919' }}
+
             >
               {item.label}
             </Button>
           ))}
           
           <Button 
-            onClick={onToggleDarkMode}
+            onClick={() => setIsDark(!isDark)}
             aria-label="Toggle dark mode"
           >
-            {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
+            {isDark ? <LightModeIcon sx={{color: 'white'}} /> : <DarkModeIcon sx={{color: 'black'}} />}
           </Button>
         </Box>
       </Toolbar>

@@ -1,25 +1,21 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 import BlockQuote from '../../components/BlockQuote';
 import LogoHolder from '../../components/LogoHolder';
 import frankImage from '../../assets/images/frank.jpg'; 
+import { ThemeContext } from '../../contexts/ThemeContext';
 const OverviewPage = (props) => {
-  const {width, height, borderTopLeftRadius, borderBottomLeftRadius} = props;
+  const {width, height} = props;
+
+  const {isDark} = useContext(ThemeContext);
+
   const styles  = { 
-    background: "white",
+    background: isDark ? "#191919" : "white",
     width: width ? width : "100%", 
-    padding: "2rem 3rem 4rem 3rem", // 👈 extra bottom padding
-    borderTopLeftRadius: borderTopLeftRadius ? borderTopLeftRadius : "1rem",
-    borderBottomLeftRadius: borderBottomLeftRadius ? borderBottomLeftRadius : "1rem",
-    borderRight: "0.5rem solid black"
+    color: isDark ? "white" : "#191919",
+    padding: "2rem 3rem 4rem 3rem", 
+    borderRight: isDark ?  "0.6rem solid grey" : "0.6rem solid black",
   };
   
-
-  // const styleImage = {
-  //   borderRadius: "50%",
-  //   height: "200px",
-  //   width: "200px"
-  // }
-
   return (
     <div style={styles} className='d-flex flex-column justify-content-evenly align-items-start gap-4 appear-down'>
         <img src={frankImage} alt="Frank" className='global-img img-fluid' />
@@ -31,7 +27,7 @@ const OverviewPage = (props) => {
         <BlockQuote
         content="Passionate full-stack developer, skilled in building robust backend systems and engaging frontend experiences."
         width='100%'
-        link='Hire me'
+        linkText='Hire me'
         goTo='#contact'
         />
         <Fragment >

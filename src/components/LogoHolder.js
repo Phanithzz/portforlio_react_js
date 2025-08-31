@@ -1,33 +1,25 @@
-import { Box, ThemeProvider } from '@mui/material'
-import React from 'react'
+  import { Box, ThemeProvider, useTheme } from '@mui/material'
+  import React from 'react'
 
-const LogoHolder = (props) => {
-    const {width, height} = props;
+  const LogoHolder = (props) => {
+      const {width, height} = props;
+  const theme = useTheme();
 
-  return (
-    <ThemeProvider
-      theme={{
-        palette: {
-          primary: {
-            main: '#eeeeee',
-            dark: '#dddddd',
-          },
-        },
-      }}
-    >
-      <Box
-        sx={{
-          width: width ? width : 100,
-          height: height ? height : 100,
-          borderRadius: 1,
-          bgcolor: 'primary.main',
-          '&:hover': {
-            bgcolor: 'primary.dark',
-          },
-        }}
-      />
-    </ThemeProvider>
-  )
-}
+    return (
+    
+        <Box
+          sx={{
+            width: width ? width : 100,
+            height: height ? height : 100,
+            borderRadius: 1,
+            backgroundColor: theme.palette.primary.main,
+            '&:hover': {
+              background: theme.palette.primary.dark,
+            },
+          }}
+        />
 
-export default LogoHolder
+    )
+  }
+
+  export default LogoHolder

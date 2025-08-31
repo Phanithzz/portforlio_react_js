@@ -4,10 +4,33 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { ThemeProvider, createTheme } from '@mui/material';
+import ThemeContextProvider from './contexts/ThemeContext';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#eeeeee",
+      dark: "#dddddd",
+      blue: "#3452ff",
+    },
+  },
+});
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    
+    <ThemeProvider
+      theme={theme}
+    >
+      <ThemeContextProvider>
+
+        <App />
+      </ThemeContextProvider>
+    </ThemeProvider>
+
   </React.StrictMode>
 );
 

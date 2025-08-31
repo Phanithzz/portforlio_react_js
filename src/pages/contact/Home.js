@@ -5,6 +5,8 @@ const ContactHomePage = () => {
   return (
         <SectionPaper
         // id='contact'
+        goTo='#contact'
+        title='CONTACT ME'
         />
   )
 }

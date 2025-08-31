@@ -4,8 +4,7 @@ import SectionPaper from '../../components/SectionPaper'
 const HomeExperience = () => {
   return (
     <SectionPaper 
-    content='exxmmmmmmmmm'
-    link='link'
+    title='EXPERIENCE'
     />
   )
 }
