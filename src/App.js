@@ -11,7 +11,7 @@ import 'simplebar-react/dist/simplebar.min.css';
 import { ThemeContext } from './contexts/ThemeContext';
 function App() {
   const [showSections, setShowSections] = useState(false);
-  const {isDark, setIsDark} = useContext(ThemeContext);
+  const {isDark} = useContext(ThemeContext);
 
   // Delay shwoing section time
   useEffect(() => {
@@ -64,7 +64,7 @@ function App() {
             <SimpleBar style={{ height: "90%"}}>
               <section id="home"><HomePage /></section>
               <section id="about"><AboutPage /></section>
-              <section id="projects"><HomeExperience /></section>
+              <section id="experience"><HomeExperience /></section>
               <section id="contact"><ContactHomePage /></section>
             </SimpleBar>
           </div>

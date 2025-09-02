@@ -1,24 +1,33 @@
-  import { Box, ThemeProvider, useTheme } from '@mui/material'
-  import React from 'react'
+  import { Box, ThemeProvider, Typography, useTheme } from '@mui/material'
+  import React, { Fragment, useContext } from 'react'
+import { ThemeContext } from '../contexts/ThemeContext';
 
   const LogoHolder = (props) => {
-      const {width, height} = props;
+  const {width, height, text, logo, paddings} = props;
   const theme = useTheme();
+  const {isDark} = useContext(ThemeContext);
 
     return (
-    
-        <Box
-          sx={{
-            width: width ? width : 100,
-            height: height ? height : 100,
-            borderRadius: 1,
-            backgroundColor: theme.palette.primary.main,
-            '&:hover': {
-              background: theme.palette.primary.dark,
-            },
-          }}
-        />
-
+      <Box
+        sx={{
+          textAlign: 'center',
+          // width: width || '100%',
+          // height: height || '100%',
+          borderRadius: 1,
+          padding: paddings ?? '0.5rem',
+          backgroundColor: isDark 
+            ? theme.palette.primary.dark 
+            : theme.palette.primary.main,
+          '&:hover': {
+            backgroundColor: isDark 
+              ? theme.palette.primary.darker 
+              : theme.palette.primary.darkGrey,
+          },
+        }}
+      >
+        {logo && logo}
+        {text && <Typography>{text}</Typography>}
+      </Box>
     )
   }
 

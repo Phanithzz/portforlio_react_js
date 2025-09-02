@@ -5,7 +5,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { handleNavClick } from '../utils/NavigateUtil';
 
 const SectionPaper = (props) => {
-  const { id, isHomePage, srcImg, title, content, goTo, link, gridSize } = props;
+  const { isHomePage, srcImg, title, content, goTo, link, gridSize } = props;
   const {isDark} = useContext(ThemeContext);
 
   const style = {
@@ -29,13 +29,13 @@ const SectionPaper = (props) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       {isHomePage ? (
-        <Paper className='appear-up'  id={id ?? ""} square={false} variant="elevation" sx={styleHomePage}>
+        <Paper className='appear-up' square={false} variant="elevation" sx={styleHomePage}>
           <Grid2 container gap={5} spacing={2} alignItems="center" justifyContent="start"  sx={{ pt: 10 }}>
             <Grid2 alignContent='center'>
               <img src={srcImg ? srcImg : ''} className="global-img img-fluid" alt="" />
             </Grid2>
             <Grid2>
-              <Typography variant="h4" color="grey">
+              <Typography variant="h4" color={isDark ? '#eeeeee' : '#191919'}>
                 Hello! I'm a
               </Typography>
               <TypeAnimation 
@@ -55,7 +55,7 @@ const SectionPaper = (props) => {
           </Grid2>
         </Paper>
       ) : (
-        <Paper id={id ?? ""} sx={{ ...style }}  >
+        <Paper sx={{ ...style }}  >
           <Grid2 className="d-flex flex-column" container spacing={2}>
           <Grid2>
       <Box
@@ -73,10 +73,10 @@ const SectionPaper = (props) => {
       </Box>
     </Grid2>
 
-            <Grid2 size={gridSize ?? 6}>
+            <Grid2 size={gridSize ?? 12}>
               <Typography>{content ?? ''}</Typography>
             </Grid2>
-            <Grid2 size={gridSize ?? 6}>
+            <Grid2 size={gridSize ?? 12}>
               <Button
               component='a'
               onClick={(e)=>{handleNavClick(goTo,e)}}

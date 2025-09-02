@@ -12,7 +12,9 @@ const theme = createTheme({
   palette: {
     primary: {
       main: "#eeeeee",
-      dark: "#dddddd",
+      darkGrey:"#cfcece",
+      dark: "#111111",
+      darker: "black",
       blue: "#3452ff",
     },
   },
@@ -21,16 +23,13 @@ const theme = createTheme({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    
     <ThemeProvider
       theme={theme}
     >
       <ThemeContextProvider>
-
         <App />
       </ThemeContextProvider>
     </ThemeProvider>
-
   </React.StrictMode>
 );
 

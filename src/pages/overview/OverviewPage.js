@@ -3,10 +3,15 @@ import BlockQuote from '../../components/BlockQuote';
 import LogoHolder from '../../components/LogoHolder';
 import frankImage from '../../assets/images/frank.jpg'; 
 import { ThemeContext } from '../../contexts/ThemeContext';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { useTheme } from '@mui/material';
+
 const OverviewPage = (props) => {
   const {width, height} = props;
 
   const {isDark} = useContext(ThemeContext);
+  const theme = useTheme();
+  const location = <LocationOnIcon sx={{color: theme.palette.primary.blue}} />
 
   const styles  = { 
     background: isDark ? "#191919" : "white",
@@ -30,9 +35,10 @@ const OverviewPage = (props) => {
         linkText='Hire me'
         goTo='#contact'
         />
-        <Fragment >
-          <LogoHolder width="2rem" height="2rem" />
-        </Fragment>
+        <div className='d-flex flex-row h-100 w-100 gap-1 justify-content-between'>
+          <LogoHolder   logo={location} />
+          <LogoHolder  text="Sangkat Russei Keo, Phnom Penh" />
+        </div>
         <Fragment>
           <LogoHolder />
         </Fragment>
