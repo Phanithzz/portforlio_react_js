@@ -26,7 +26,7 @@ import { ThemeContext } from '../contexts/ThemeContext';
         }}
       >
         {logo && logo}
-        {text && <Typography>{text}</Typography>}
+        {text && <Typography sx={{textAlign: 'start', pl: '0.5rem'}}>{text}</Typography>}
       </Box>
     )
   }

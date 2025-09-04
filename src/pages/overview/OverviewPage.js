@@ -1,10 +1,10 @@
 import React, { Fragment, useContext } from 'react'
 import BlockQuote from '../../components/BlockQuote';
 import LogoHolder from '../../components/LogoHolder';
-import frankImage from '../../assets/images/frank.jpg'; 
+import myImage from '../../assets/images/My_Picture_Square.png'; 
 import { ThemeContext } from '../../contexts/ThemeContext';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { useTheme } from '@mui/material';
+import { Grid2, useTheme } from '@mui/material';
 
 const OverviewPage = (props) => {
   const {width, height} = props;
@@ -16,6 +16,7 @@ const OverviewPage = (props) => {
   const styles  = { 
     background: isDark ? "#191919" : "white",
     width: width ? width : "100%", 
+    height: "100%",
     color: isDark ? "white" : "#191919",
     padding: "2rem 3rem 4rem 3rem", 
     borderRight: isDark ?  "0.6rem solid grey" : "0.6rem solid black",
@@ -23,7 +24,7 @@ const OverviewPage = (props) => {
   
   return (
     <div style={styles} className='d-flex flex-column justify-content-evenly align-items-start gap-4 appear-down'>
-        <img src={frankImage} alt="Frank" className='global-img img-fluid' />
+        <img src={myImage} alt="img" className='global-img img-fluid' />
 
         <h2 className='name-section'> 
           <span >Proeung</span> 
@@ -35,10 +36,22 @@ const OverviewPage = (props) => {
         linkText='Hire me'
         goTo='#contact'
         />
-        <div className='d-flex flex-row h-100 w-100 gap-1 justify-content-between'>
-          <LogoHolder   logo={location} />
+        <Grid2
+        container
+        spacing={2}
+        width='100%'
+        >
+          <Grid2
+          size={2}
+          >
+           <LogoHolder   logo={location} />
+          </Grid2>
+          <Grid2 size={10}>
           <LogoHolder  text="Sangkat Russei Keo, Phnom Penh" />
-        </div>
+          </Grid2>
+        </Grid2>
+         
+ 
         <Fragment>
           <LogoHolder />
         </Fragment>
