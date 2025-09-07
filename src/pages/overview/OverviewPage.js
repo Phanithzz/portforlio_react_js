@@ -45,6 +45,7 @@ const OverviewPage = (props) => {
         width='100%'
         linkText='Hire me'
         goTo='#contact'
+        height='9rem'
         />
         <>
           <Grid2
