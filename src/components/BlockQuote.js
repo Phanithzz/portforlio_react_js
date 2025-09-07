@@ -66,6 +66,8 @@ const BlockQuote = (props) => {
           component='a'
           onClick={(e) => { handleNavClick(goTo, e) }}
           sx={{
+            padding: 0,
+            display: 'block',
             color: isDark ? '#ffffff' : '#191919',
             textDecoration: 'underline',
             '&:hover': { color: theme.palette.primary.blue },

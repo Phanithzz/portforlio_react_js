@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { ThemeProvider, createTheme } from '@mui/material';
 import ThemeContextProvider from './contexts/ThemeContext';
+import { ToastContainer } from 'react-toastify';
 
 const theme = createTheme({
   palette: {
@@ -28,6 +29,7 @@ root.render(
     >
       <ThemeContextProvider>
         <App />
+        <ToastContainer />
       </ThemeContextProvider>
     </ThemeProvider>
   </React.StrictMode>
