@@ -75,7 +75,7 @@ export const NavBar = ({ borderRadius }) => {
       <Drawer anchor="right" open={mobileOpen} onClose={toggleDrawer(false)}>
         <Box sx={{ width: 250, p: 2, backgroundColor: isDark ? '#191919' : 'white', height: '100%' }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
-            <Typography variant="h6">Menu</Typography>
+            <Typography variant="h6" sx={{ color: isDark ? 'white' : 'black' }}>Menu</Typography>
             <IconButton onClick={toggleDrawer(false)} sx={{ color: isDark ? 'white' : 'black' }}>
               <CloseIcon />
             </IconButton>

@@ -3,7 +3,7 @@
 import { ThemeContext } from '../contexts/ThemeContext';
 
   const LogoHolder = (props) => {
-  const {aLogo, href, text, logo, paddings} = props;
+  const {aLogo, href, text, logo, paddings, display} = props;
   const theme = useTheme();
   const {isDark} = useContext(ThemeContext);
 
@@ -11,6 +11,7 @@ import { ThemeContext } from '../contexts/ThemeContext';
     return (
       <Box
         sx={{
+          display: display,
           textAlign: 'center',
           // width: width || '100%',
           // height: height || '100%',
@@ -27,7 +28,7 @@ import { ThemeContext } from '../contexts/ThemeContext';
         }}
       >
         {logo && logo}
-        {text && <Typography sx={{textAlign: 'start', }}>{text}</Typography>}
+        {text && <Typography sx={{textAlign: 'start', }} gutterBottom>{text}</Typography>}
         {aLogo && (
           <a href={href} target='_blank' >
             {aLogo}

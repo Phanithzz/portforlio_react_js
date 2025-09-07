@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import SectionPaper from '../../components/SectionPaper'
+import LogoHolder from '../../components/LogoHolder';
 
 const AboutPage = () => {
   const content = `
@@ -8,11 +9,19 @@ const AboutPage = () => {
   I like working with new people. New people are new experiences.
   `;
 
+  const texts = [
+    "Name: Proeung Chanphanith", "Birthday: December 13, 2004", "Languages: Khmer, English","Nationality: Khmer", 
+    "Address: Phnom Pehn, Cambodia", "Phone: (+855) 966 373 640", "Email: proeungchanphanith@gmail.com"
+  ];
+  
   return (
-    <SectionPaper
-      title="BIOGRAPHY"
-      content={content}
-    />
+    <Fragment>
+      <SectionPaper
+        title="BIOGRAPHY"
+        content={content}
+        multiText={texts}
+      />
+    </Fragment>
   );
 };
 

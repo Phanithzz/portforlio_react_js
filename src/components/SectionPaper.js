@@ -3,9 +3,10 @@ import React, { useContext } from 'react'
 import { ThemeContext } from '../contexts/ThemeContext';
 import { TypeAnimation } from 'react-type-animation';
 import { handleNavClick } from '../utils/NavigateUtil';
+import LogoHolder from './LogoHolder';
 
 const SectionPaper = (props) => {
-  const { isHomePage, srcImg, title, content, goTo, link, gridSize } = props;
+  const { isHomePage, srcImg, title, content, goTo, link, gridSize, multiText } = props;
   const {isDark} = useContext(ThemeContext);
 
   const style = {
@@ -83,7 +84,12 @@ const SectionPaper = (props) => {
               >
                 {link ?? ''}
               </Button>
-              
+            </Grid2>
+            <Grid2 sx={{display:'flex', flexWrap: 'wrap', gap: '0.6rem'}} size={gridSize ?? 12}>
+            {multiText && multiText.map((val,i)=> {
+          
+              return <LogoHolder paddings='0.6rem' text={val} />
+            })}
             </Grid2>
           </Grid2>
         </Paper>
