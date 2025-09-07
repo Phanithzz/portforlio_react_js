@@ -2,7 +2,6 @@ import React, { Fragment, useContext } from 'react'
 import BlockQuote from '../../components/BlockQuote';
 import LogoHolder from '../../components/LogoHolder';
 import myImage from '../../assets/images/My_Picture_Square.png'; 
-import myImage from '../../assets/images/My_Picture_Square.png'; 
 import { ThemeContext } from '../../contexts/ThemeContext';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
