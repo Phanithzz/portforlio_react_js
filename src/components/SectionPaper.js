@@ -6,7 +6,7 @@ import { handleNavClick } from '../utils/NavigateUtil';
 import LogoHolder from './LogoHolder';
 
 const SectionPaper = (props) => {
-  const { isHomePage, srcImg, title, content, goTo, link, gridSize, multiText } = props;
+  const { isHomePage, srcImg, title, content, goTo, link, gridSize, multiText, children } = props;
   const {isDark} = useContext(ThemeContext);
 
   const style = {
@@ -62,11 +62,11 @@ const SectionPaper = (props) => {
       <Box
         component="span"
         sx={{
-          fontSize: '1.25rem',        // same as h6
+          fontSize: '1.25rem',        
           fontWeight: 'bold',
           borderBottom: '2px solid #3452ff',
-          display: 'inline-block',     // shrink to text width
-          lineHeight: 2,               // avoid extra spacing
+          display: 'inline-block',    
+          lineHeight: 2,          
           // paddingBottom: '5px',
         }}
       >
@@ -91,6 +91,10 @@ const SectionPaper = (props) => {
               return <LogoHolder paddings='0.6rem' text={val} />
             })}
             </Grid2>
+
+            {children && (
+              <Grid2 size={gridSize ?? 12}>{children}</Grid2>
+            )}
           </Grid2>
         </Paper>
       )}

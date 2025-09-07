@@ -1,43 +1,81 @@
-import { Button, Card, CardActionArea, CardContent, Link, Typography, useTheme } from '@mui/material';
+import { Button, Card, Box, CardContent, Link, Typography, useTheme } from '@mui/material';
 import React, { useContext } from 'react'
 import { ThemeContext } from '../contexts/ThemeContext';
 import { handleNavClick } from '../utils/NavigateUtil';
 
 const BlockQuote = (props) => {
-    const {id, title, content, linkText, width, goTo}=props;
+    const {id, title, subTitle, content, linkText, width, goTo, fontSize, gap, paddings, height}=props;
     const {isDark} = useContext(ThemeContext);
     const theme = useTheme();
     const styles = {
-      borderLeft: "3px solid #3452ff",
+      position: 'relative',
       background: isDark ? "#191919":"#eeeeee",
-      width: width ?? "50%",
-      padding: "0rem 0.1rem",
+      width: width ?? "100%",
+      padding: paddings ? paddings :"0rem 0.1rem",
       borderRadius: "0rem",
-      color: isDark ? "#eeeeee" : "#777777"
-    }
+      color: isDark ? "#eeeeee" : "#777777",
+      
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        width: '3px',
+        height: height ?? '100%',
+        backgroundColor: '#3452ff',
+        borderRadius: '1px',
+      }
+    };
+    
   return (
-    <Card id = {id ?? ""} sx={styles} raised={false} >
-      <CardActionArea>
-      <CardContent className='d-flex flex-column justify-content-center gap-1'>
-        <Typography variant='h2'>
+    <Card
+      sx={{
+        display: 'flex',
+        alignItems: 'center', 
+        background: isDark ? "#191919" : "#eeeeee",
+        width: width ?? "100%",
+        padding: paddings ?? "0.5rem",
+        borderRadius: "0rem",
+        color: isDark ? "#eeeeee" : "#777777",
+      }}
+    >
+      {/* Left border */}
+      <Box
+        sx={{
+          width: '0.5rem',
+          height: height ?? '100%', 
+          backgroundColor: '#3452ff',
+          borderRadius: '1px',
+        }}
+      />
+      
+      {/* Content */}
+      <CardContent sx={{ paddingLeft: '1rem' }}>
+        <Typography variant='h6' sx={{ color: isDark ? theme.palette.primary.main : theme.palette.primary.dark }}>
+          {subTitle ?? ""}
+        </Typography>
+        <Typography variant='subtitle1' sx={{ 
+          color: isDark ? 'white' : theme.palette.primary.darker,
+          fontSize: fontSize ?? '18px' }}>
           {title ?? ""}
         </Typography>
         <Typography variant='subtitle'>
-            {content ?? ""}
+          {content ?? ""}
         </Typography>
         <Button
-        component='a'
-        onClick={(e)=> {handleNavClick(goTo,e)}}
-        sx={{ color: isDark ? '#ffffff' : '#191919', textDecoration: 'underline','&:hover': {
-          color: theme.palette.primary.blue,
-        } }}
+          component='a'
+          onClick={(e) => { handleNavClick(goTo, e) }}
+          sx={{
+            color: isDark ? '#ffffff' : '#191919',
+            textDecoration: 'underline',
+            '&:hover': { color: theme.palette.primary.blue },
+          }}
         >
-            {linkText ?? ""}
+          {linkText ?? ""}
         </Button>
       </CardContent>
-      </CardActionArea>
-
     </Card>
+
   )
 }
 
