@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import SectionPaper from '../../components/SectionPaper'
 import { useForm } from 'react-hook-form'
 import ContactMe from '../../models/ContactMe.Model'
-import { TextField, Button, Box } from '@mui/material'
+import { TextField, Button, Box, useTheme } from '@mui/material'
 import { zodResolver } from "@hookform/resolvers/zod";
 import emailjs from "@emailjs/browser";
 import { EmailPublicKey, EmailServiceKey, EmailTemplateKey } from '../../constants/appConst'
 import { toast } from 'react-toastify'
+import { ThemeContext } from '../../contexts/ThemeContext'
 
 const ContactHomePage = () => {
   const {
@@ -18,6 +19,8 @@ const ContactHomePage = () => {
     resolver: zodResolver(ContactMe),
   });
 
+  const {isDark} = useContext(ThemeContext);
+  const theme = useTheme();
   const onSubmit = async (data) => {
     try {
       let name = data.firstName + ' ' + data.lastName;
@@ -47,7 +50,20 @@ const ContactHomePage = () => {
   };
 
   const styleTxt = {
-    color: 'red'
+    '& .MuiInputLabel-root': {
+      color: isDark ? theme.palette.primary.main : theme.palette.primary.dark, // label color
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: isDark ? theme.palette.primary.main : theme.palette.primary.dark, // default border color
+      },
+      '&:hover fieldset': {
+        borderColor: isDark ? theme.palette.primary.darkGrey : theme.palette.primary.darker, // border on hover
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: isDark ? theme.palette.primary.darkGrey : theme.palette.primary.darker, // border when focused
+      },
+    },
   }
 
   return (
@@ -66,7 +82,7 @@ const ContactHomePage = () => {
         }}
       >
         <TextField
-        sx={styleTxt}
+          sx={styleTxt}
           label="First Name"
           {...register('firstName')}
           placeholder='Enter your first name'
@@ -77,6 +93,7 @@ const ContactHomePage = () => {
         />
 
         <TextField
+          sx={styleTxt}
           label="Last Name"
           {...register('lastName')}
           placeholder='Enter your last name'
@@ -87,6 +104,7 @@ const ContactHomePage = () => {
         />
 
         <TextField
+        sx={styleTxt}
           label="Subject"
           {...register('subject')}
           placeholder='Enter the subject'
@@ -97,6 +115,7 @@ const ContactHomePage = () => {
         />
 
         <TextField
+        sx={styleTxt}
           label="Message"
           {...register('message')}
           placeholder='Enter your message'
