@@ -9,67 +9,111 @@ import { useState, useEffect, useContext } from 'react';
 import ContactHomePage from './pages/contact/Home';
 import 'simplebar-react/dist/simplebar.min.css';
 import { ThemeContext } from './contexts/ThemeContext';
+import { Box, Grid2, Paper } from '@mui/material';
+
+import { useTheme, useMediaQuery } from '@mui/material';
+
 function App() {
   const [showSections, setShowSections] = useState(false);
-  const {isDark} = useContext(ThemeContext);
+  const { isDark } = useContext(ThemeContext);
+  const theme = useTheme();
+  const isLgUp = useMediaQuery(theme.breakpoints.up('lg')); // true on lg and above
 
-  // Delay shwoing section time
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSections(true);
-    }, 600); 
+    }, 600);
     return () => clearTimeout(timer);
   }, []);
 
-  return (
-    <div
-      className="App"
-      style={{
-        height: "100vh",
-        overflow: "hidden",
-        padding: "2rem",
-        background: isDark ? "linear-gradient(120deg, #3452ff 0% 33%, #151515 33% 66%, #000000 66% 100%)" : "linear-gradient(120deg, #3452ff 0% 33%, #eeeeee 33% 66%, #ffffff 66% 100%)",
-        backgroundSize: "100% 150%",
-        animation: "gradientIntro 1s ease-out forwards",
-      }}
-    >
-             <NavBar/>
-      {showSections && (        
-        <div>  
-   
-          <div 
-          style={{ 
-            display: "flex", 
-            flexDirection: "row", 
-            marginTop: "0.5rem",
-            height: "calc(100vh - 60px)",
-            gap: "10px" 
-          }} 
-        >
-          {/* Left Section */}
-          <div style={{
-             width: "35%", 
-             height: "100%", 
-             borderTopLeftRadius: '1rem',
-             borderBottomLeftRadius: "1rem",
-             overflow: "hidden",    
-            }}>
-            <SimpleBar style={{ height: "90%" }}>
-              <OverviewPage />
-            </SimpleBar>
-          </div>
+  const backgroundStyle = {
+    minHeight: "100vh",
+    alignItems: "stretch" ,
+    overflowX: "hidden",
+    padding: "1rem",
+    background: isDark
+      ? "linear-gradient(120deg, #3452ff 0%, #3452ff 33%, #151515 33%, #151515 66%, #000000 66%, #000000 100%)"
+      : "linear-gradient(120deg, #3452ff 0%, #3452ff 33%, #eeeeee 33%, #eeeeee 66%, #ffffff 66%, #ffffff 100%)",
+    backgroundSize: "100% 100%",
+    animation: "gradientIntro 1s ease-out forwards",
+    transition: "background 0.3s ease",
+  };
 
-          {/* Right Section */}
-          <div style={{ flex: 1, height: "100%" }}>
-            <SimpleBar style={{ height: "90%"}}>
-              <section id="home"><HomePage /></section>
-              <section id="about"><AboutPage /></section>
-              <section id="experience"><HomeExperience /></section>
-              <section id="contact"><ContactHomePage /></section>
-            </SimpleBar>
-          </div>
-        </div>
-        </div>
+  const leftSectionStyle = {
+    height: { xs: "auto", lg: "calc(100vh - 120px)" },
+    borderTopLeftRadius: '1rem',
+    borderBottomLeftRadius: "1rem",
+    overflow: "hidden",
+    backgroundColor: isDark ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)',
+    backdropFilter: 'blur(10px)',
+  };
+
+  const rightSectionStyle = {
+    height: { xs: "auto", lg: "calc(100vh - 120px)" },
+    borderTopRightRadius: '1rem',
+    borderBottomRightRadius: "1rem",
+    overflow: "hidden",
+    backgroundColor: isDark ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)',
+    backdropFilter: 'blur(10px)',
+  };
+
+  return (
+    <div className="App" style={backgroundStyle}>
+      <Box sx={{ my: '0.5rem' }}>
+        <NavBar />
+      </Box>
+
+      {showSections && (
+        <Grid2 container spacing={2}>
+          {/* Left Section - Overview */}
+          <Grid2 size={{ xs: 12, lg: 4 }} sx={leftSectionStyle}>
+            {isLgUp ? (
+              <SimpleBar style={{ maxHeight: "100%" }}>
+                <OverviewPage />
+              </SimpleBar>
+            ) : (
+              <OverviewPage /> 
+            )}
+          </Grid2>
+
+          {/* Right Section - Main Content */}
+          <Grid2 size={{ xs: 12, lg: 8 }} sx={rightSectionStyle}  >
+            {isLgUp ? (
+              <SimpleBar style={{ maxHeight: "100%" }} className="main-content-scroll">
+                <Box>
+                  <section id="home">
+                    <HomePage />
+                  </section>
+                  <section id="about">
+                    <AboutPage />
+                  </section>
+                  <section id="experience">
+                    <HomeExperience />
+                  </section>
+                  <section id="contact">
+                    <ContactHomePage />
+                  </section>
+                </Box>
+              </SimpleBar>
+            ) : (
+              // On mobile: no SimpleBar, natural document scroll
+              <Box>
+                <section id="home">
+                  <HomePage />
+                </section>
+                <section id="about">
+                  <AboutPage />
+                </section>
+                <section id="experience">
+                  <HomeExperience />
+                </section>
+                <section id="contact">
+                  <ContactHomePage />
+                </section>
+              </Box>
+            )}
+          </Grid2>
+        </Grid2>
       )}
     </div>
   );

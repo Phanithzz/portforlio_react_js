@@ -27,12 +27,12 @@ const SectionPaper = (props) => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box  sx={{ flexGrow: 1 }}>
       {isHomePage ? (
         <Paper className='appear-up' square={false} variant="elevation" sx={styleHomePage}>
           <Grid2 container gap={5} spacing={2} alignItems="center" justifyContent="start"  sx={{ pt: 10 }}>
             <Grid2 alignContent='center'>
-              <img src={srcImg ? srcImg : ''} className="global-img img-fluid" alt="" />
+              <img src={srcImg ? srcImg : ''} style={{width: '300px'}} className="img-fluid" alt="" />
             </Grid2>
             <Grid2>
               <Typography variant="h4" color={isDark ? '#eeeeee' : '#191919'}>
@@ -49,7 +49,7 @@ const SectionPaper = (props) => {
                 ]}
                 speed={50}
                 repeat={Infinity}
-                style={{ fontSize: '4em', fontWeight: 'bolder' }}
+                style={{ fontSize: '3em', fontWeight: 'bolder' }}
               />
             </Grid2>
           </Grid2>

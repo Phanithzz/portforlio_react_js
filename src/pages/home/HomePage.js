@@ -1,12 +1,11 @@
 import React from 'react'
-import BlockQuote from '../../components/BlockQuote'
 import SectionPaper from '../../components/SectionPaper'
-import frankImage from '../../assets/images/frank.jpg'; 
+import myImage from '../../assets/images/style_pf.png'; 
 const HomePage = () => {
   return (
     <SectionPaper
     isHomePage={true}
-    srcImg={frankImage}
+    srcImg={myImage}
     />
   )
 }
