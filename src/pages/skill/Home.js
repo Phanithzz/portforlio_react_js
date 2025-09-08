@@ -25,26 +25,36 @@ const SkillHomePage = ({ scrollerRef }) => {
       console.error('ScrollTrigger is not available');
       return;
     }
-    const scrollEl = scrollerRef?.current?.getScrollElement?.() || scrollerRef?.current || window;
 
-    barsRef.current.forEach((bar, i) => {
-      if (!bar) return; 
-      gsap.fromTo(
-        bar,
-        { width: 0 },
-        {
-          width: bar.dataset.percent + '%',
-          scrollTrigger: {
-            trigger: bar,
-            scroller: scrollEl,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-          },
-          ease: 'power1.out',
-          duration: 1,
-        }
-      );
-    });
+    const timer = setTimeout(()=> {
+      const scrollEl = scrollerRef?.current?.getScrollElement?.() || scrollerRef?.current || window;
+
+      barsRef.current.forEach((bar, i) => {
+        if (!bar) return; 
+        gsap.fromTo(
+          bar,
+          { width: 0 },
+          {
+            width: bar.dataset.percent + '%',
+            scrollTrigger: {
+              trigger: bar,
+              scroller: scrollEl,
+              start: 'top 80%',
+              toggleActions: 'play none none none',
+            },
+            ease: 'power1.out',
+            duration: 1,
+          }
+        );
+      });
+
+      ScrollTrigger.refresh();
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+    
   }, [scrollerRef]);
 
   return (
