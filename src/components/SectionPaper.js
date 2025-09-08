@@ -10,7 +10,7 @@ const SectionPaper = (props) => {
   const {isDark} = useContext(ThemeContext);
 
   const style = {
-    padding: '1.5rem 2rem',
+    padding: '2.5rem 2rem',
     marginBottom: "1rem",
     scrollMarginTop: '60px',
     backgroundColor: isDark ? '#191919' : 'white',
@@ -57,22 +57,22 @@ const SectionPaper = (props) => {
         </Paper>
       ) : (
         <Paper sx={{ ...style }}  >
-          <Grid2 className="d-flex flex-column" container spacing={2}>
+          <Grid2 className="d-flex flex-column" container spacing={0.5}>
           <Grid2>
-      <Box
-        component="span"
-        sx={{
-          fontSize: '1.25rem',        
-          fontWeight: 'bold',
-          borderBottom: '2px solid #3452ff',
-          display: 'inline-block',    
-          lineHeight: 2,          
-          // paddingBottom: '5px',
-        }}
-      >
-        {title ?? '' }
-      </Box>
-    </Grid2>
+          <Box
+            component="span"
+            sx={{
+              fontSize: '1.25rem',        
+              fontWeight: 'bold',
+              borderBottom: '2px solid #3452ff',
+              display: 'inline-block',    
+              lineHeight: 2,          
+              mb: '1rem'
+            }}
+          >
+            {title ?? '' }
+          </Box>
+        </Grid2>
 
             <Grid2 size={gridSize ?? 12}>
               <Typography>{content ?? ''}</Typography>

@@ -8,6 +8,7 @@ import emailjs from "@emailjs/browser";
 import { EmailPublicKey, EmailServiceKey, EmailTemplateKey } from '../../constants/appConst'
 import { toast } from 'react-toastify'
 import { ThemeContext } from '../../contexts/ThemeContext'
+import { purple } from '@mui/material/colors'
 
 const ContactHomePage = () => {
   const {
@@ -53,15 +54,18 @@ const ContactHomePage = () => {
     '& .MuiInputLabel-root': {
       color: isDark ? theme.palette.primary.main : theme.palette.primary.dark, // label color
     },
+    '& .MuiInputLabel-root.Mui-focused': {
+      color: isDark ? theme.palette.primary.main : theme.palette.primary.dark, // focused label color
+    },
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
         borderColor: isDark ? theme.palette.primary.main : theme.palette.primary.dark, // default border color
       },
       '&:hover fieldset': {
-        borderColor: isDark ? theme.palette.primary.darkGrey : theme.palette.primary.darker, // border on hover
+        borderColor: isDark ? theme.palette.primary.darkGrey : theme.palette.primary.dark, // border on hover
       },
       '&.Mui-focused fieldset': {
-        borderColor: isDark ? theme.palette.primary.darkGrey : theme.palette.primary.darker, // border when focused
+        borderColor: isDark ? theme.palette.primary.darkGrey : theme.palette.primary.dark, // border when focused
       },
     },
   }

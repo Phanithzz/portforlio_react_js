@@ -5,20 +5,23 @@ import SimpleBar from 'simplebar-react';
 import HomePage from './pages/home/HomePage';
 import AboutPage from './pages/about/AboutPage';
 import HomeExperience from './pages/experience/Home';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import ContactHomePage from './pages/contact/Home';
 import 'simplebar-react/dist/simplebar.min.css';
 import { ThemeContext } from './contexts/ThemeContext';
 import { Box, Grid2, Paper } from '@mui/material';
 
 import { useTheme, useMediaQuery } from '@mui/material';
+import ScrollUp from './components/ScrollUp';
+import SkillHomePage from './pages/skill/Home';
 
 function App() {
   const [showSections, setShowSections] = useState(false);
   const { isDark } = useContext(ThemeContext);
   const theme = useTheme();
   const isLgUp = useMediaQuery(theme.breakpoints.up('lg')); // true on lg and above
-
+  const scrollRef = useRef(null);
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSections(true);
@@ -77,16 +80,23 @@ function App() {
           </Grid2>
 
           {/* Right Section - Main Content */}
-          <Grid2 size={{ xs: 12, lg: 8 }} sx={rightSectionStyle}  >
+          <Grid2 size={{ xs: 12, lg: 8 }} sx={rightSectionStyle}>
             {isLgUp ? (
-              <SimpleBar style={{ maxHeight: "100%" }} className="main-content-scroll">
+              <SimpleBar 
+                style={{ maxHeight: "100%" }} 
+                className="main-content-scroll"
+                ref={scrollRef}
+              >
                 <Box>
                   <section id="home">
                     <HomePage />
                   </section>
                   <section id="about">
                     <AboutPage />
+                    
                   </section>
+                  <SkillHomePage scrollerRef={scrollRef} />
+
                   <section id="experience">
                     <HomeExperience />
                   </section>
@@ -103,6 +113,7 @@ function App() {
                 </section>
                 <section id="about">
                   <AboutPage />
+                  <SkillHomePage />
                 </section>
                 <section id="experience">
                   <HomeExperience />
@@ -115,6 +126,9 @@ function App() {
           </Grid2>
         </Grid2>
       )}
+
+      {/* Single ScrollUp component that handles both desktop and mobile */}
+      <ScrollUp scrollContainerRef={scrollRef} isDesktop={isLgUp} />
     </div>
   );
 }
