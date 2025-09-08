@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionPaper from '../../components/SectionPaper';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -16,9 +16,19 @@ const SkillHomePage = ({ scrollerRef }) => {
   const barsRef = useRef([]);
 
   useEffect(() => {
+    if (typeof gsap === 'undefined') {
+      console.error('GSAP is not available');
+      return;
+    }
+    
+    if (typeof ScrollTrigger === 'undefined') {
+      console.error('ScrollTrigger is not available');
+      return;
+    }
     const scrollEl = scrollerRef?.current?.getScrollElement?.() || scrollerRef?.current || window;
 
     barsRef.current.forEach((bar, i) => {
+      if (!bar) return; 
       gsap.fromTo(
         bar,
         { width: 0 },
