@@ -38,11 +38,12 @@ const BlockQuote = (props) => {
         borderRadius: "0rem",
         color: isDark ? "#eeeeee" : "#777777",
       }}
+      raised
     >
       {/* Left border */}
       <Box
         sx={{
-          width: '0.5rem',
+          width: '0.4rem',
           height: height ?? '100%', 
           backgroundColor: '#3452ff',
           borderRadius: '1px',

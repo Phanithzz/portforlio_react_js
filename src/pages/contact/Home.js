@@ -52,23 +52,25 @@ const ContactHomePage = () => {
 
   const styleTxt = {
     '& .MuiInputLabel-root': {
-      color: isDark ? theme.palette.primary.main : theme.palette.primary.dark, // label color
+      color: isDark ? theme.palette.primary.main : theme.palette.primary.dark, // default label color
     },
     '& .MuiInputLabel-root.Mui-focused': {
       color: isDark ? theme.palette.primary.main : theme.palette.primary.dark, // focused label color
     },
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
-        borderColor: isDark ? theme.palette.primary.main : theme.palette.primary.dark, // default border color
+        borderColor: isDark ? theme.palette.primary.main : theme.palette.primary.dark, // default border
       },
       '&:hover fieldset': {
-        borderColor: isDark ? theme.palette.primary.darkGrey : theme.palette.primary.dark, // border on hover
+        borderColor: isDark ? theme.palette.primary.darkGrey : theme.palette.primary.dark, // hover border
       },
       '&.Mui-focused fieldset': {
-        borderColor: isDark ? theme.palette.primary.darkGrey : theme.palette.primary.dark, // border when focused
+        borderColor: isDark ? theme.palette.primary.darkGrey : theme.palette.primary.dark, // focused border
       },
+      color: isDark ? '#fff' : '#000', 
     },
-  }
+  };
+  
 
   return (
     <SectionPaper
