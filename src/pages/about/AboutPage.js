@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import SectionPaper from '../../components/SectionPaper'
-import LogoHolder from '../../components/LogoHolder';
 
 const AboutPage = () => {
   const content = `

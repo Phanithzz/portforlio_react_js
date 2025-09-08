@@ -3,7 +3,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { Button, AppBar, Toolbar, Typography, Box, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import { Button, AppBar, Toolbar, Typography, Box, IconButton, Drawer, List, ListItem } from '@mui/material';
 import { useState, useContext } from 'react';
 import { ThemeContext } from '../contexts/ThemeContext';
 import { handleNavClick } from '../utils/NavigateUtil';

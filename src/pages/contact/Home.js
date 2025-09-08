@@ -8,7 +8,6 @@ import emailjs from "@emailjs/browser";
 import { EmailPublicKey, EmailServiceKey, EmailTemplateKey } from '../../constants/appConst'
 import { toast } from 'react-toastify'
 import { ThemeContext } from '../../contexts/ThemeContext'
-import { purple } from '@mui/material/colors'
 
 const ContactHomePage = () => {
   const {

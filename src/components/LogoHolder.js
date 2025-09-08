@@ -30,7 +30,7 @@ import { ThemeContext } from '../contexts/ThemeContext';
         {logo && logo}
         {text && <Typography sx={{textAlign: 'start', }} gutterBottom>{text}</Typography>}
         {aLogo && (
-          <a href={href} target='_blank' >
+          <a href={href} target='_blank' rel="noreferrer" >
             {aLogo}
           </a>
         )}
