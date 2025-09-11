@@ -1,20 +1,21 @@
 import './App.css';
 import { NavBar } from './components/NavBar';
-import OverviewPage from './pages/overview/OverviewPage';
 import SimpleBar from 'simplebar-react';
-import HomePage from './pages/home/HomePage';
-import AboutPage from './pages/about/AboutPage';
-import HomeExperience from './pages/experience/Home';
-import { useState, useEffect, useContext, useRef } from 'react';
-import ContactHomePage from './pages/contact/Home';
+import { useState, useEffect, useContext, useRef, useMemo, lazy, Suspense } from 'react';
 import 'simplebar-react/dist/simplebar.min.css';
 import { ThemeContext } from './contexts/ThemeContext';
-import { Box, Grid2, Paper } from '@mui/material';
-
+import { Box, Grid2 } from '@mui/material';
 import { useTheme, useMediaQuery } from '@mui/material';
 import ScrollUp from './components/ScrollUp';
-import SkillHomePage from './pages/skill/Home';
-import HomeEducation from './pages/education/Home';
+import Loader from './components/loader/Loader';
+
+const OverviewPage = lazy(() => import('./pages/overview/OverviewPage'));
+const HomePage = lazy(() => import('./pages/home/HomePage'));
+const AboutPage = lazy(() => import('./pages/about/AboutPage'));
+const HomeExperience = lazy(() => import('./pages/experience/Home'));
+const SkillHomePage = lazy(() => import('./pages/skill/Home'));
+const HomeEducation = lazy(() => import('./pages/education/Home'));
+const ContactHomePage = lazy(() => import('./pages/contact/Home'));
 
 function App() {
   const [showSections, setShowSections] = useState(false);
@@ -30,7 +31,7 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  const backgroundStyle = {
+  const backgroundStyle = useMemo(() => ({
     minHeight: "100vh",
     alignItems: "stretch" ,
     overflowX: "hidden",
@@ -41,7 +42,7 @@ function App() {
     backgroundSize: "100% 100%",
     animation: "gradientIntro 1s ease-out forwards",
     transition: "background 0.3s ease",
-  };
+  }), [isDark]);
 
   const leftSectionStyle = {
     height: { xs: "auto", lg: "calc(100vh - 120px)" },
@@ -63,6 +64,7 @@ function App() {
 
   return (
     <div className="App" style={backgroundStyle}>
+      <Suspense fallback={<Loader />}>
       <Box sx={{ my: '0.5rem' }}>
         <NavBar />
       </Box>
@@ -92,10 +94,10 @@ function App() {
                   <section id="home">
                     <HomePage />
                   </section>
-                  <HomeEducation />
                   <section id="about">
                     <AboutPage />     
                   </section>
+                  <HomeEducation />
                   <section id="experience">
                     <HomeExperience />
                   </section>
@@ -111,10 +113,10 @@ function App() {
                 <section id="home">
                   <HomePage />
                 </section>
-                <HomeEducation />
                 <section id="about">
                   <AboutPage />
                 </section>
+                <HomeEducation />
                 <section id="experience">
                   <HomeExperience />
                 </section>
@@ -130,6 +132,8 @@ function App() {
 
       {/* Single ScrollUp component that handles both desktop and mobile */}
       <ScrollUp scrollContainerRef={scrollRef} isDesktop={isLgUp} />
+      </Suspense>
+
     </div>
   );
 }
