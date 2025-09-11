@@ -88,7 +88,11 @@ const SectionPaper = (props) => {
             <Grid2 sx={{display:'flex', flexWrap: 'wrap', gap: '0.6rem'}} size={gridSize ?? 12}>
             {multiText && multiText.map((val,i)=> {
           
-              return <LogoHolder paddings='0.6rem' text={val} />
+              return (
+                <div key={i}>
+                  <LogoHolder paddings='0.6rem' text={val} />
+                </div>
+              )
             })}
             </Grid2>
 

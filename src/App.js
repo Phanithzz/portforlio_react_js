@@ -14,6 +14,7 @@ import { Box, Grid2, Paper } from '@mui/material';
 import { useTheme, useMediaQuery } from '@mui/material';
 import ScrollUp from './components/ScrollUp';
 import SkillHomePage from './pages/skill/Home';
+import HomeEducation from './pages/education/Home';
 
 function App() {
   const [showSections, setShowSections] = useState(false);
@@ -91,15 +92,14 @@ function App() {
                   <section id="home">
                     <HomePage />
                   </section>
+                  <HomeEducation />
                   <section id="about">
-                    <AboutPage />
-                    
+                    <AboutPage />     
                   </section>
-                  <SkillHomePage scrollerRef={scrollRef} />
-
                   <section id="experience">
                     <HomeExperience />
                   </section>
+                  <SkillHomePage scrollerRef={scrollRef} />
                   <section id="contact">
                     <ContactHomePage />
                   </section>
@@ -111,13 +111,14 @@ function App() {
                 <section id="home">
                   <HomePage />
                 </section>
+                <HomeEducation />
                 <section id="about">
                   <AboutPage />
-                  <SkillHomePage />
                 </section>
                 <section id="experience">
                   <HomeExperience />
                 </section>
+                <SkillHomePage />
                 <section id="contact">
                   <ContactHomePage />
                 </section>

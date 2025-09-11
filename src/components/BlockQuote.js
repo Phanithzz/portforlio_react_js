@@ -7,25 +7,6 @@ const BlockQuote = (props) => {
     const {id, title, subTitle, content, linkText, width, goTo, fontSize, gap, paddings, height}=props;
     const {isDark} = useContext(ThemeContext);
     const theme = useTheme();
-    const styles = {
-      position: 'relative',
-      background: isDark ? "#191919":"#eeeeee",
-      width: width ?? "100%",
-      padding: paddings ? paddings :"0rem 0.1rem",
-      borderRadius: "0rem",
-      color: isDark ? "#eeeeee" : "#777777",
-      
-      '&::before': {
-        content: '""',
-        position: 'absolute',
-        left: 0,
-        top: 0,
-        width: '3px',
-        height: height ?? '100%',
-        backgroundColor: '#3452ff',
-        borderRadius: '1px',
-      }
-    };
     
   return (
     <Card
@@ -37,6 +18,7 @@ const BlockQuote = (props) => {
         padding: paddings ?? "0.5rem",
         borderRadius: "0rem",
         color: isDark ? "#eeeeee" : "#777777",
+        gap: 1
       }}
       raised
     >
@@ -51,7 +33,7 @@ const BlockQuote = (props) => {
       />
       
       {/* Content */}
-      <CardContent sx={{ paddingLeft: '1rem' }}>
+      <CardContent sx={{ paddingLeft: '1rem', lineHeight: '1.5rem' }}>
         <Typography variant='h6' sx={{ color: isDark ? theme.palette.primary.main : theme.palette.primary.dark }}>
           {subTitle ?? ""}
         </Typography>
@@ -67,7 +49,8 @@ const BlockQuote = (props) => {
           component='a'
           onClick={(e) => { handleNavClick(goTo, e) }}
           sx={{
-            padding: '0.5rem',
+            padding: '0',
+            marginY: '0.5rem',
             display: 'block',
             color: isDark ? theme.palette.primary.blue : '#191919',
             textDecoration: 'underline',

@@ -93,8 +93,6 @@ const OverviewPage = (props) => {
           </Grid2>
         </>
         
-         
- 
         <div className='d-flex flex-row gap-2 '>
           <LogoHolder paddings='1rem' aLogo={git} href='https://github.com/Phanithzz'/>
           <LogoHolder paddings='1rem' aLogo={linkedIn} href='https://www.linkedin.com/in/proeung-chanphanith'/>

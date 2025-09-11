@@ -13,8 +13,6 @@ import { ThemeContext } from '../contexts/ThemeContext';
         sx={{
           display: display,
           textAlign: 'center',
-          // width: width || '100%',
-          // height: height || '100%',
           borderRadius: 1,
           padding: paddings ?? '0.3rem',
           backgroundColor: isDark 
