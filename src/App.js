@@ -86,7 +86,7 @@ function App() {
           <Grid2 size={{ xs: 12, lg: 8 }} sx={rightSectionStyle}>
             {isLgUp ? (
               <SimpleBar 
-                style={{ maxHeight: "100%" }} 
+              style={{ maxHeight: "calc(100vh - 120px)" }}
                 className="main-content-scroll"
                 ref={scrollRef}
               >
