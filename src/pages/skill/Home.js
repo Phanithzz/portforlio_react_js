@@ -2,35 +2,30 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionPaper from '../../components/SectionPaper';
+import { FaReact, FaGitAlt } from 'react-icons/fa';
+import { SiPostgresql, SiSpringboot } from 'react-icons/si';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 const skills = [
-  { name: 'Java', percent: 70 },
-  { name: 'React', percent: 65 },
-  { name: 'Postgres', percent: 60 },
-  { name: 'Git/Github', percent: 60 },
+  { name: 'Springboot', percent: 70, logo: <SiSpringboot size={24} color="green" /> },
+  { name: 'React', percent: 65, logo: <FaReact size={24} color="#61DBFB" /> },
+  { name: 'Postgres', percent: 60, logo: <SiPostgresql size={24} color="#336791" /> },
+  { name: 'Git/Github', percent: 60, logo: <FaGitAlt size={24} color="#f34f29" /> },
 ];
 
 const SkillHomePage = ({ scrollerRef }) => {
   const barsRef = useRef([]);
 
   useEffect(() => {
-    if (typeof gsap === 'undefined') {
-      console.error('GSAP is not available');
-      return;
-    }
-    
-    if (typeof ScrollTrigger === 'undefined') {
-      console.error('ScrollTrigger is not available');
-      return;
-    }
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-    const timer = setTimeout(()=> {
+    const timer = setTimeout(() => {
       const scrollEl = scrollerRef?.current?.getScrollElement?.() || scrollerRef?.current || window;
 
       barsRef.current.forEach((bar, i) => {
-        if (!bar) return; 
+        if (!bar) return;
         gsap.fromTo(
           bar,
           { width: 0 },
@@ -42,8 +37,8 @@ const SkillHomePage = ({ scrollerRef }) => {
               start: 'top 80%',
               toggleActions: 'play none none none',
             },
-            ease: 'power1.out',
-            duration: 1,
+            ease: 'power2.out',
+            duration: 1.2,
           }
         );
       });
@@ -51,26 +46,29 @@ const SkillHomePage = ({ scrollerRef }) => {
       ScrollTrigger.refresh();
     }, 500);
 
-    return () => {
-      clearTimeout(timer);
-    };
-    
+    return () => clearTimeout(timer);
   }, [scrollerRef]);
 
   return (
     <SectionPaper title="Skills">
-      <div style={{  display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         {skills.map((skill, idx) => (
-          <div key={skill.name}>
-            <div style={{ marginBottom: '0.3rem', fontWeight: 'bold' }}>{skill.name} {skill.percent+ '%'}</div>
+          <div key={skill.name} style={{}}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '0.4rem' }}>
+              {skill.logo}
+              <span style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>
+                {skill.name} — {skill.percent}%
+              </span>
+            </div>
 
             <div
               style={{
-                height: '20px',
+                height: '18px',
                 width: '100%',
                 background: '#eee',
-                borderRadius: '10px',
+                borderRadius: '12px',
                 overflow: 'hidden',
+                boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.1)',
               }}
             >
               <div
@@ -79,8 +77,8 @@ const SkillHomePage = ({ scrollerRef }) => {
                 style={{
                   height: '100%',
                   width: 0,
-                  background: '#3452ff',
-                  borderRadius: '10px',
+                  background: 'linear-gradient(90deg, #3452ff, #00c6ff)',
+                  borderRadius: '12px',
                 }}
               ></div>
             </div>
