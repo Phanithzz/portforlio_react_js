@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/portforlio_react_js/static/css/main.cdc04831.css",
-    "main.js": "/portforlio_react_js/static/js/main.a197283f.js",
+    "main.js": "/portforlio_react_js/static/js/main.cea0bc93.js",
     "static/js/791.321be5f2.chunk.js": "/portforlio_react_js/static/js/791.321be5f2.chunk.js",
     "static/js/288.44f8719e.chunk.js": "/portforlio_react_js/static/js/288.44f8719e.chunk.js",
     "static/js/879.272b6876.chunk.js": "/portforlio_react_js/static/js/879.272b6876.chunk.js",
     "static/js/601.d9a98ebb.chunk.js": "/portforlio_react_js/static/js/601.d9a98ebb.chunk.js",
     "static/js/430.fcf7d714.chunk.js": "/portforlio_react_js/static/js/430.fcf7d714.chunk.js",
     "static/js/515.879effbe.chunk.js": "/portforlio_react_js/static/js/515.879effbe.chunk.js",
-    "static/js/484.4a9104b1.chunk.js": "/portforlio_react_js/static/js/484.4a9104b1.chunk.js",
+    "static/js/522.e91c46a2.chunk.js": "/portforlio_react_js/static/js/522.e91c46a2.chunk.js",
     "static/js/453.41811d64.chunk.js": "/portforlio_react_js/static/js/453.41811d64.chunk.js",
     "static/js/66.5b3e1405.chunk.js": "/portforlio_react_js/static/js/66.5b3e1405.chunk.js",
     "static/js/257.7cff25fd.chunk.js": "/portforlio_react_js/static/js/257.7cff25fd.chunk.js",
@@ -16,20 +16,20 @@
     "static/media/style_pf.png": "/portforlio_react_js/static/media/style_pf.a6ff6a02ca244de9cdf7.png",
     "index.html": "/portforlio_react_js/index.html",
     "main.cdc04831.css.map": "/portforlio_react_js/static/css/main.cdc04831.css.map",
-    "main.a197283f.js.map": "/portforlio_react_js/static/js/main.a197283f.js.map",
+    "main.cea0bc93.js.map": "/portforlio_react_js/static/js/main.cea0bc93.js.map",
     "791.321be5f2.chunk.js.map": "/portforlio_react_js/static/js/791.321be5f2.chunk.js.map",
     "288.44f8719e.chunk.js.map": "/portforlio_react_js/static/js/288.44f8719e.chunk.js.map",
     "879.272b6876.chunk.js.map": "/portforlio_react_js/static/js/879.272b6876.chunk.js.map",
     "601.d9a98ebb.chunk.js.map": "/portforlio_react_js/static/js/601.d9a98ebb.chunk.js.map",
     "430.fcf7d714.chunk.js.map": "/portforlio_react_js/static/js/430.fcf7d714.chunk.js.map",
     "515.879effbe.chunk.js.map": "/portforlio_react_js/static/js/515.879effbe.chunk.js.map",
-    "484.4a9104b1.chunk.js.map": "/portforlio_react_js/static/js/484.4a9104b1.chunk.js.map",
+    "522.e91c46a2.chunk.js.map": "/portforlio_react_js/static/js/522.e91c46a2.chunk.js.map",
     "453.41811d64.chunk.js.map": "/portforlio_react_js/static/js/453.41811d64.chunk.js.map",
     "66.5b3e1405.chunk.js.map": "/portforlio_react_js/static/js/66.5b3e1405.chunk.js.map",
     "257.7cff25fd.chunk.js.map": "/portforlio_react_js/static/js/257.7cff25fd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cdc04831.css",
-    "static/js/main.a197283f.js"
+    "static/js/main.cea0bc93.js"
   ]
 }
