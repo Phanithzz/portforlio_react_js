@@ -2,12 +2,13 @@ import React, { useContext } from 'react'
 import SectionPaper from '../../components/SectionPaper'
 import { useForm } from 'react-hook-form'
 import ContactMe from '../../models/ContactMe.Model'
-import { TextField, Button, Box, useTheme } from '@mui/material'
+import { TextField, Button, Box, useTheme, Grid2 } from '@mui/material'
 import { zodResolver } from "@hookform/resolvers/zod";
 import emailjs from "@emailjs/browser";
 import { EmailPublicKey, EmailServiceKey, EmailTemplateKey } from '../../constants/appConst'
 import { toast } from 'react-toastify'
 import { ThemeContext } from '../../contexts/ThemeContext'
+import RequiredLabel from '../../components/required/RequiredLabel'
 
 const ContactHomePage = () => {
   const {
@@ -86,31 +87,39 @@ const ContactHomePage = () => {
           width: '100%'
         }}
       >
-        <TextField
-          sx={styleTxt}
-          label="First Name"
-          {...register('firstName')}
-          placeholder='Enter your first name'
-          error={!!errors.firstName}
-          helperText={errors.firstName?.message}
-          fullWidth
-          variant="outlined"
-        />
+<Grid2 container spacing={1} width="100%">
+  <Grid2 size={6}>
+    <TextField
+      sx={styleTxt}
+      label={<RequiredLabel label="First Name" />}
+      {...register('firstName')}
+      placeholder="Enter your first name"
+      error={!!errors.firstName}
+      helperText={errors.firstName?.message}
+      fullWidth
+      variant="outlined"
+    />
+  </Grid2>
 
-        <TextField
-          sx={styleTxt}
-          label="Last Name"
-          {...register('lastName')}
-          placeholder='Enter your last name'
-          error={!!errors.lastName}
-          helperText={errors.lastName?.message}
-          fullWidth
-          variant="outlined"
-        />
+  <Grid2 size={6}>
+    <TextField
+      sx={styleTxt}
+      label={<RequiredLabel label="Last Name" />}
+      {...register('lastName')}
+      placeholder="Enter your last name"
+      error={!!errors.lastName}
+      helperText={errors.lastName?.message}
+      fullWidth
+      variant="outlined"
+    />
+  </Grid2>
+</Grid2>
+
+
 
         <TextField
         sx={styleTxt}
-          label="Subject"
+          label={<RequiredLabel label="Subject"/>}
           {...register('subject')}
           placeholder='Enter the subject'
           error={!!errors.subject}
@@ -121,7 +130,7 @@ const ContactHomePage = () => {
 
         <TextField
         sx={styleTxt}
-          label="Message"
+          label={<RequiredLabel label="Message"/>}
           {...register('message')}
           placeholder='Enter your message'
           multiline
